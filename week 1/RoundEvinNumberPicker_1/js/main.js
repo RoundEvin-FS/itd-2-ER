@@ -1,44 +1,50 @@
 (function() {
     let userNumber;
     let randomNumber = getRandom();
-    let guess = 0;
+    let guess;
+    let name;
+    
+
     playGame();
  
-    function getRandom(x){
-        return Math.floor(Math.random( ) * x + 1);
+    function getRandom(){
+        return Math.floor(Math.random( ) * 5 + 1);
         } 
  
-    function gameOver() {
-            alert("Game Over!");
-            }
     function playGame() {
+        alert("Let's play a guessing game!");
+        name = prompt("What is your name?");
         userNumber = prompt("Enter a number between 1 and 5.");
-        randomNumber = getRandom(5);
+        guess = 0;
         if (userNumber > randomNumber) {    
-            alert("Too high!");
-            
-            playGame();
+        alert("Too high!");
+            guess++;
+         playGame();
     } 
         else if (userNumber < randomNumber) {
-        alert("Too low!"); 
-        playGame();
+            alert("Too low!"); 
+            guess++;
+            playGame();
     }
         else {
             alert("You won!"); 
             round2(); 
     }
- }
+}
  
     function round2() {
         guess = 0;
         userNumber = prompt("Enter a number between 1 and 10.");
-        randomNumber=getRandom(10);
+ 
         if (userNumber > randomNumber) {    
             alert("Too high!");
+            guess++;
             round2();
+            
     } 
         else if (userNumber < randomNumber) {
-        alert("Too low!");  
+            alert("Too low!");  
+            guess++;
             round2();
     }
         else {
@@ -48,7 +54,6 @@
     }
     function round3() {
             userNumber = prompt("Enter a number between 1 and 25.");
-            randomNumber=getRandom(25);
             if (userNumber > randomNumber) {    
                 alert("Too high!");
                 round3();
@@ -59,7 +64,16 @@
         }
             else {
                 alert("You won!"); 
-               gameOver() 
+                gameOver()
         }
+    
+         function gameOver(){
+                alert("Game Over!");
+                let answer = prompt("Do you want to play again?");
+                if(answer == "yes" || answer == "y"){
+                    playGame();
+                } else {
+            "Game Over!"
+        }}
     }
 })();
