@@ -1,8 +1,10 @@
 (function() {
     let userNumber;
     let randomNumber = getRandom();
-    let guess;
+    let guess = 0;
     let name;
+    alert("Let's play a guessing game!");
+    name = prompt("What is your name?");
     
 
     playGame();
@@ -10,20 +12,27 @@
     function getRandom(){
         return Math.floor(Math.random( ) * 5 + 1);
         } 
+        function gameOver(){
+            alert("Game Over!");
+            let answer = prompt("Do you want to play again?");
+            if(answer == "yes" || answer == "y"){
+                playGame();
+            } else {
+        "Game Over!"
+    }}
  
     function playGame() {
-        alert("Let's play a guessing game!");
-        name = prompt("What is your name?");
         userNumber = prompt("Enter a number between 1 and 5.");
-        guess = 0;
         if (userNumber > randomNumber) {    
-        alert("Too high!");
+            alert("Too high!");
             guess++;
-         playGame();
+            if (guess >=4) { gameOver();}
+            playGame();
     } 
         else if (userNumber < randomNumber) {
             alert("Too low!"); 
             guess++;
+            if (guess >=4) { gameOver();}
             playGame();
     }
         else {
@@ -67,13 +76,6 @@
                 gameOver()
         }
     
-         function gameOver(){
-                alert("Game Over!");
-                let answer = prompt("Do you want to play again?");
-                if(answer == "yes" || answer == "y"){
-                    playGame();
-                } else {
-            "Game Over!"
-        }}
+        
     }
 })();
